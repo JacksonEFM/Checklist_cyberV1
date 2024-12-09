@@ -77,7 +77,7 @@ def main(data, title, product_images, failure_images, validation_result, suggest
             if status == "Não Atendido":
                 # Buscar sugestões associadas ao item não atendido
                 item_suggestions = suggestions_data.get(key, [])
-                st.write(items)
+  
                 if item_suggestions:
                     pdf.set_font("Arial", style="I", size=12)
                     pdf.set_text_color(255, 140, 0)  # Laranja para sugestões
