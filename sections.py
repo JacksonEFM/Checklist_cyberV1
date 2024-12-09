@@ -28,7 +28,7 @@ def sec():
 
     "5.3": [
         "O dispositivo deve verificar se as senhas definidas pelo usuário são fortes e não comumente usadas. Deve utilizar um dicionario de senhas.",
-        "5.3.1: O método de verificação deve ser informado à autoridade responsável pela segurança do produto. (O dicionario utilizado deve estar documentado no manual)."
+        "5.3.1: O método de verificação deve ser informado à autoridade responsável pela segurança do produto. (O dicionario utilizado deve ser informado ao laboratório)."
     ],
 
     "6.1": [
