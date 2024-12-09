@@ -114,6 +114,6 @@ def main(data, title, product_images, failure_images, validation_result, suggest
     pdf.ln(5)
 
     # Salvar PDF
-    filename = f"relatorios/Relatorio_Cyber_{title}.pdf"
+    filename = "filename.pdf"
     pdf.output(filename)
     return filename
