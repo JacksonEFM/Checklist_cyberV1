@@ -9,7 +9,6 @@ st.title("Checklist de Verificação CYBER")
 
 # Personalizar título do relatório
 custom_title = st.text_input("Modelo:", value="")
-issue_key = st.text_input("Chave de config:", value="")
 
 # Upload de imagens do produto
 uploaded_images = st.file_uploader("Foto do produto (opcional)", accept_multiple_files=True, type=["png", "jpg", "jpeg"])
