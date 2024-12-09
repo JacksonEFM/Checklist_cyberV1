@@ -7,7 +7,6 @@ import sections
 
 st.title("Checklist de Verificação CYBER")
 
-
 # Personalizar título do relatório
 custom_title = st.text_input("Modelo:", value="")
 
