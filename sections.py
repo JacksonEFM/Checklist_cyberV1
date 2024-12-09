@@ -39,7 +39,7 @@ def sec():
             " ---> SHA-1 (considerado fraco para criptografia e assinaturas digitais)."
             " ---> Criptografia SSL 2.0 e SSL 3.0 (obsoletos e vulneráveis a ataques).",
         "d) O dispositivo deve encerrar sessões inativas automaticamente após um certo período.",
-        "e) O dispositivo deve desabilitar serviços desnecessários para reduzir os riscos de segurança. (Verificar quais portas estão abertas e comenta-las abaixo)",
+        "e) O dispositivo deve desabilitar serviços desnecessários para reduzir os riscos de segurança. (Verificar quais portas estão abertas e comenta-las abaixo)Link de software de verificação https://drive.google.com/file/d/1mbBrFqPrW9qVcl85yJ0gkPqRLkBalKIO/view?usp=sharing",
         "f) O usuário deve poder desabilitar funcionalidades ou serviços que não são essenciais."
     ],
 
