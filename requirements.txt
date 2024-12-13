@@ -1,1 +1,5 @@
 fpdf
+tempfile
+os
+requests
+requests.auth
