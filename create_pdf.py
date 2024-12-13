@@ -1,8 +1,8 @@
 from fpdf import FPDF
 from datetime import datetime
 import streamlit as st
-
-def main(data, title, product_images, failure_images, validation_result, suggestions_data):
+#def main(data, title, product_images, failure_images,validation_result, suggestions_data):
+def main(data, title, product_images, failure_images, suggestions_data):
     class CustomPDF(FPDF):
         def header(self):
             self.image('img.png', x=10, y=8, w=30)  # Ajuste o caminho para sua imagem
@@ -58,10 +58,10 @@ def main(data, title, product_images, failure_images, validation_result, suggest
         for key, content in items.items():
             # Adicionar o status do item
             if content["status"]:
-                status = "Atendido"
+                status = "Sim"
                 status_color = (0, 0, 0)  # Verde
             else:
-                status = "Não Atendido"
+                status = "Não"
                 status_color = (255, 0, 0)  # Vermelho
 
             pdf.set_text_color(*status_color)
@@ -77,7 +77,7 @@ def main(data, title, product_images, failure_images, validation_result, suggest
             if status == "Não Atendido":
                 # Buscar sugestões associadas ao item não atendido
                 item_suggestions = suggestions_data.get(key, [])
-  
+                #st.write(items)
                 if item_suggestions:
                     pdf.set_font("Arial", style="I", size=12)
                     pdf.set_text_color(255, 140, 0)  # Laranja para sugestões
@@ -103,17 +103,17 @@ def main(data, title, product_images, failure_images, validation_result, suggest
     # Resultado de validação final
     pdf.set_font("Arial", style="B", size=14)
     pdf.set_text_color(0, 0, 128)
-    pdf.cell(0, 10, "Resultado de Validação:", ln=True)
+    #pdf.cell(0, 10, "Resultado de Validação:", ln=True)
     pdf.set_draw_color(0, 0, 128)
     pdf.line(10, pdf.get_y(), 200, pdf.get_y())
     pdf.ln(5)
 
     pdf.set_font("Arial", size=12)
     pdf.set_text_color(0, 0, 0)
-    pdf.multi_cell(0, 10, validation_result)
+   # pdf.multi_cell(0, 10, validation_result)
     pdf.ln(5)
 
     # Salvar PDF
-    filename = f"Relatorio_Cyber_{title}.pdf"
+    filename = f"Relatorio PreVendas - Modelo: {title}.pdf"
     pdf.output(filename)
     return filename
