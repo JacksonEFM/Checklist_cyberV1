@@ -114,6 +114,6 @@ def main(data, title, product_images, failure_images, suggestions_data):
     pdf.ln(5)
 
     # Salvar PDF
-    filename = f"Relatorio PreVendas - Modelo: {title}.pdf"
+    filename = f"Relatorio Cyber - Modelo: {title}.pdf"
     pdf.output(filename)
     return filename
