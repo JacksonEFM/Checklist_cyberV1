@@ -1,5 +1,4 @@
 fpdf
 tempfile
-os
 requests
 
