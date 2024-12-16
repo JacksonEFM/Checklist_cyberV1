@@ -4,22 +4,12 @@ import os
 import create_pdf
 import suggestions
 import sections
-import requests
-from requests.auth import HTTPBasicAuth
 
-
-jira_url = st.secrets["jira_url"]
-email = st.secrets["email"]
-api_token = st.secrets["api_token"]
-
-headers = {"Accept": "application/json"}
-auth = HTTPBasicAuth(email, api_token)
-
-st.title("Checklist de Verificação - Cyber")
+st.title("Checklist de Verificação CYBER")
 
 # Personalizar título do relatório
 custom_title = st.text_input("Modelo:", value="")
-issue_key = st.text_input("Chave de EQP:", value="")
+issue_key = st.text_input("Chave de config:", value="")
 
 # Upload de imagens do produto
 uploaded_images = st.file_uploader("Foto do produto (opcional)", accept_multiple_files=True, type=["png", "jpg", "jpeg"])
@@ -35,19 +25,17 @@ failed_items_with_suggestions = {}
 
 # Formulário para cada seção e item
 for section, items in sections_data.items():
-    #st.write(items)
+
     st.subheader(section)
     section_responses = {}
 
     for idx, item in enumerate(items):  # Adicionando um índice
-        #st.write(item)
+
         status = st.checkbox(f"{item}", key=f"{section}_{idx}_{item}_status", value=False)
         comments = st.text_area(f"Comentários sobre:", key=f"{section}_{idx}_{item}_comments", value="")
         section_responses[item] = {"status": status, "comments": comments}
 
     responses[section] = section_responses
-
-
 
 #                Buscar sugestões diretamente usando a chave do item
 #                item_suggestions = suggestions_data.get(item, ["Sem sugestão disponível"])
@@ -55,7 +43,6 @@ for section, items in sections_data.items():
 #                #st.write(f"Sugestões para '{item}':", item_suggestions)
 
     responses[section] = section_responses
-
 
             # Adicionar itens não conformes às sugestões
 #            if not status:
@@ -110,7 +97,6 @@ if st.button("Gerar Relatório"):
         custom_title,
         product_images,
         failure_images,
-        #validation_result,
         suggestions_data
     )
 
@@ -133,41 +119,3 @@ if st.button("Gerar Relatório"):
     for image_path in product_images + failure_images:
         os.remove(image_path)
 
-
-def anexar_arquivo_jira(jira_url, issue_key, email, api_token, file_path):
-    """Função para anexar arquivos ao Jira"""
-    upload_url = f"{jira_url}/rest/api/3/issue/{issue_key}/attachments"
-    headers = {"X-Atlassian-Token": "no-check", "Accept": "application/json"}
-
-    try:
-        with open(file_path, "rb") as file:
-            files = {"file": (file_path.split("/")[-1], file)}
-            response = requests.post(
-                upload_url,
-                headers=headers,
-                files=files,
-                auth=HTTPBasicAuth(email, api_token)
-            )
-
-        if response.status_code == 200:
-            return "Arquivo anexado com sucesso!"
-        else:
-            return f"Erro ao anexar arquivo: {response.status_code} - {response.text}"
-
-    except FileNotFoundError:
-        return "Erro: Arquivo não encontrado."
-    except Exception as e:
-        return f"Erro inesperado: {str(e)}"
-
-
-# Botão de anexar ao Jira
-if st.button("Anexar ao Jira"):
-    if "filename" in st.session_state and st.session_state["filename"]:
-        filename = st.session_state["filename"]
-        mensagem = anexar_arquivo_jira(jira_url, issue_key, email, api_token, filename)
-        if "sucesso" in mensagem.lower():
-            st.success(mensagem)
-        else:
-            st.error(mensagem)
-    else:
-        st.warning("Nenhum relatório foi gerado para anexar.")
