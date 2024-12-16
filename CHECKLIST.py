@@ -6,10 +6,9 @@ import suggestions
 import sections
 
 st.title("Checklist de Verificação CYBER")
-
-# Personalizar título do relatório
+        
+    # Personalizar título do relatório
 custom_title = st.text_input("Modelo:", value="")
-issue_key = st.text_input("Chave de config:", value="")
 
 # Upload de imagens do produto
 uploaded_images = st.file_uploader("Foto do produto (opcional)", accept_multiple_files=True, type=["png", "jpg", "jpeg"])
@@ -97,6 +96,7 @@ if st.button("Gerar Relatório"):
         custom_title,
         product_images,
         failure_images,
+
         suggestions_data
     )
 
@@ -118,4 +118,3 @@ if st.button("Gerar Relatório"):
     # Limpar arquivos temporários
     for image_path in product_images + failure_images:
         os.remove(image_path)
-
