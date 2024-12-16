@@ -15,7 +15,7 @@ api_token = st.secrets["api_token"]
 headers = {"Accept": "application/json"}
 auth = HTTPBasicAuth(email, api_token)
 
-st.title("Checklist de Verificação - Logistica")
+st.title("Checklist de Verificação - Cyber")
 
 # Personalizar título do relatório
 custom_title = st.text_input("Modelo:", value="")
