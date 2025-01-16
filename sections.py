@@ -32,7 +32,7 @@ def sec():
     ],
 
     "6.1": [
-        "a) O dispositivo deve se proteger contra ataques de força bruta (tentativas repetidas de adivinhar a senha).",
+        "a) O dispositivo deve se proteger contra ataques de força bruta (Verificar se bloqueia a página ao errar a senha algumas tentativas).",
         "b) O dispositivo não pode usar credenciais, senhas ou chaves fixas (hard-coded). Solicitar código fonte caso não enviado.",
         "c) As senhas e chaves de acesso devem ser protegidas com criptografia ou hashing adequados. Métodos que não são considerados seguros incluem:"
             " ---> MD5 (considerado vulnerável a colisões e ataques de força bruta)."
